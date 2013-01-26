@@ -1,0 +1,24 @@
+
+include dog
+
+
+
+define add: message to: list do
+	list[structure_size: list] = message
+	return list
+end
+
+
+
+messages = []
+
+tweets = listen_to: everyone for: "tweets"
+
+forever do
+	display: messages to: everyone as: "messages"
+
+	on tweet do
+		messages = add: tweet.message to: messages
+	end
+end
+
